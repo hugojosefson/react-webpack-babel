@@ -3,7 +3,7 @@ import expect from 'expect';
 describe.only('reducers', () => {
     describe('simple reducer', () => {
         function isLoadingReducer(state = false, action) {
-            // TODO
+            return action.type === 'REQUEST_NEWS_HEADERS' ? true : state;
         }
 
         it('sets isLoading to true for REQUEST_NEWS_HEADERS', () => {
