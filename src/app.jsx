@@ -3,7 +3,7 @@ import api from './api';
 
 const NewsHeader = ({body}) => <p className="lead">Header {body}</p>;
 
-const NewsItem = (onSelect, {id, header}) => <li><a href="#" onClick={onSelect.bind(undefined, id)}>Item {id} - {header}</a></li>;
+const NewsItem = (onSelect, {id, header}) => <li key={id}><a href="#" onClick={onSelect.bind(undefined, id)}>Item {id} - {header}</a></li>;
 
 const NewsList = ({list, onSelect}) => <div>{list.map(NewsItem.bind(undefined, onSelect))}</div>;
 
