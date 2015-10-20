@@ -47,7 +47,10 @@ describe.only('reducers', () => {
 
         // Notice the redux combineReducers does not work like this
         function simpleCombineReducers(state, action) {
-            // TODO
+            return Object.assign({}, state, {
+                a: reducerA(state.a, action),
+                b: reducerB(state.b, action)
+            });
         }
 
         it('combines two reducers', () => {
@@ -60,7 +63,7 @@ describe.only('reducers', () => {
         it('does not modify the original state', () => {
             const state = {foo: 'bar'};
             const action = {type: 'A', value: 'value a'};
-            const expectedState = {foo: 'bar', a: 'value a', b: 123};
+            simpleCombineReducers(state, action);
             expect(state).toEqual({foo: 'bar'});
         });
     })
