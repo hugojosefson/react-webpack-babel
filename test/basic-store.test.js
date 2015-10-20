@@ -37,9 +37,12 @@ describe.only('reducers', () => {
 
     describe('simpleCombineReducers', () => {
 
+        var valueUpdater = (type, initialValue) =>
+            (state = initialValue, action) => action.type === type ? action.value : state;
+
         var reducers = {
-            a: (state = 'initial a', action) => action.type === 'A' ? action.value : state,
-            b: (state = 123, action) => action.type === 'B' ? action.value : state
+            a: valueUpdater('A', 'initial a'),
+            b: valueUpdater('B', 123)
         };
 
         // Notice the redux combineReducers does not work like this
