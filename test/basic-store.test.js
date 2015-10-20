@@ -48,8 +48,8 @@ describe.only('reducers', () => {
         // Notice the redux combineReducers does not work like this
         function simpleCombineReducers(state, action) {
             return Object.assign({}, state, {
-                a: reducers.a(state.a, action),
-                b: reducers.b(state.b, action)
+                a: reducers['a'](state['a'], action),
+                b: reducers['b'](state['b'], action)
             });
         }
 
