@@ -1,4 +1,5 @@
-require("bootstrap/dist/css/bootstrap.min.css")
+require('bootstrap/dist/css/bootstrap.min.css');
+require('./heartbeat.css');
 import React from 'react';
 import ReactDOM from 'react-dom';
 
