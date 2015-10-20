@@ -1,6 +1,6 @@
 import React from 'react';
-import api from './api';
 import { connect } from 'react-redux';
+import * as actionCreators from './action-creators';
 
 const NewsHeader = ({body}) => <p className="lead">Header {body}</p>;
 
@@ -26,22 +26,4 @@ class App extends React.Component {
     }
 }
 
-var mapStateToProps = state => state;
-var mapDispatchToProps = {
-    loadHeaders: () => dispatch => {
-        dispatch({type: 'LOAD_HEADERS'});
-        api.getHeaders().then(
-            headers => dispatch({type: 'LOAD_HEADERS_SUCCESS', headers}),
-            reason => dispatch({type: 'LOAD_HEADERS_FAIL', reason})
-        );
-    },
-    loadBody: (id) => dispatch => {
-        dispatch({type: 'LOAD_BODY'});
-        api.getBody(id).then(
-            body => dispatch({type: 'LOAD_BODY_SUCCESS', body}),
-            reason => dispatch({type: 'LOAD_BODY_FAIL', reason})
-        );
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(state => state, actionCreators)(App);
