@@ -3,10 +3,10 @@ var path = require('path');
 
 module.exports = {
     entry: [
-    'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
-    'webpack/hot/only-dev-server',
-    './src/index.jsx' // Your appʼs entry point
-  ],
+        'webpack-dev-server/client?http://0.0.0.0:8080', // WebpackDevServer host and port
+        'webpack/hot/only-dev-server',
+        './src/index.jsx' // Your appʼs entry point
+    ],
     devtool: process.env.WEBPACK_DEVTOOL || 'source-map',
     output: {
         path: path.join(__dirname, 'public'),
@@ -56,7 +56,7 @@ module.exports = {
                 loader: "url-loader?limit=10000&minetype=image/png"
             }
 
-             ]
+        ]
     },
     devServer: {
         contentBase: "./public",
@@ -65,6 +65,6 @@ module.exports = {
         inline: true
     },
     plugins: [
-      new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin()
     ]
 };

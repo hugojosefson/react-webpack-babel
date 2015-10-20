@@ -9,19 +9,19 @@ import App from './app';
 import store from './config-store';
 
 function createDebugPanel() {
-	return (<DebugPanel top right bottom>
-				<DevTools store={store} monitor={LogMonitor} />
-			</DebugPanel>
-	);
+    return (<DebugPanel top right bottom>
+            <DevTools store={store} monitor={LogMonitor}/>
+        </DebugPanel>
+    );
 }
 
 
 ReactDOM.render(
-		<div>
-			<Provider store={ store }>
-				<App/>
-			</Provider>
-			{createDebugPanel()}
-		</div>,
-		document.querySelector("#myApp"));
+    <div>
+        <Provider store={ store }>
+            <App/>
+        </Provider>
+        {createDebugPanel()}
+    </div>,
+    document.querySelector("#myApp"));
 

@@ -3,12 +3,12 @@ const bodies = {1: 'body 1 abc qwe', 2: 'body 2 qqqbbba'};
 
 
 export default {
-  getHeaders() {
-    return new Promise((resolve) => resolve(headers));
-  },
+    getHeaders() {
+        return new Promise((resolve) => resolve(headers));
+    },
 
-  getBody(id) {
-    return new Promise((resolve) => resolve(bodies[id]))
-  }
+    getBody(id) {
+        return new Promise((resolve) => resolve(bodies[id]))
+    }
 };
 
