@@ -1,4 +1,5 @@
 import expect from 'expect';
+import _ from 'lodash';
 
 describe.only('reducers', () => {
     describe('simple reducer', () => {
@@ -40,17 +41,21 @@ describe.only('reducers', () => {
         var valueUpdater = (type, initialValue) =>
             (state = initialValue, action) => action.type === type ? action.value : state;
 
-        var reducers = {
-            a: valueUpdater('A', 'initial a'),
-            b: valueUpdater('B', 123)
-        };
+        var reducers = [
+            ['a', valueUpdater('A', 'initial a')],
+            ['b', valueUpdater('B', 123)]
+        ];
 
         // Notice the redux combineReducers does not work like this
         function simpleCombineReducers(state, action) {
-            return Object.assign({}, state, {
-                a: reducers['a'](state['a'], action),
-                b: reducers['b'](state['b'], action)
-            });
+            return _.reduce(
+                reducers,
+                (result, [key, reducer]) => {
+                    result[key] = reducer(state[key], action);
+                    return result;
+                },
+                Object.assign({}, state)
+            );
         }
 
         it('combines two reducers', () => {
