@@ -4,11 +4,10 @@ const bodies = {1: 'body 1 abc qwe', 2: 'body 2 qqqbbba'};
 
 export default {
     getHeaders() {
-        return new Promise((resolve) => resolve(headers));
+        return new Promise((resolve) => setTimeout(() => resolve(headers), 700));
     },
 
     getBody(id) {
-        return new Promise((resolve) => resolve(bodies[id]))
+        return new Promise((resolve) => setTimeout(() => resolve(bodies[id]), 700))
     }
 };
-
