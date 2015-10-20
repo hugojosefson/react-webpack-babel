@@ -37,19 +37,16 @@ describe.only('reducers', () => {
 
     describe('simpleCombineReducers', () => {
 
-        function reducerA(state = 'initial a', action) {
-            return action.type === 'A' ? action.value : state;
-        }
-
-        function reducerB(state = 123, action) {
-            return action.type === 'B' ? action.value : state;
-        }
+        var reducers = {
+            a: (state = 'initial a', action) => action.type === 'A' ? action.value : state,
+            b: (state = 123, action) => action.type === 'B' ? action.value : state
+        };
 
         // Notice the redux combineReducers does not work like this
         function simpleCombineReducers(state, action) {
             return Object.assign({}, state, {
-                a: reducerA(state.a, action),
-                b: reducerB(state.b, action)
+                a: reducers.a(state.a, action),
+                b: reducers.b(state.b, action)
             });
         }
 
