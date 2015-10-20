@@ -12,25 +12,15 @@ const NewsItem = (onSelect, {id, header}) =>
 const NewsList = ({list, onSelect}) => <div>{list.map(NewsItem.bind(undefined, onSelect))}</div>;
 
 class App extends React.Component {
-    constructor(props) {
-        super(props);
-        this.onSelect = this.onSelect.bind(this);
-    }
-
     componentDidMount() {
         this.props.loadHeaders();
-    }
-
-    onSelect(id) {
-        this.props.loadBody(id);
-        console.log('selected id ', id);
     }
 
     render() {
         return (
             <div className="container">
                 <NewsHeader body={this.props.newsBody.body}/>
-                <NewsList list={this.props.newsList.headers} onSelect={this.onSelect}/>
+                <NewsList list={this.props.newsList.headers} onSelect={this.props.loadBody}/>
             </div>
         );
     }
